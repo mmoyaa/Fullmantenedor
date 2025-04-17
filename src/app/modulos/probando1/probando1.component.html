@@ -1,0 +1,67 @@
+<button type="button" class="btn btn-primary " routerLink="/probando2">componente 2</button>
+
+
+
+<button type="button" class="btn btn-primary " routerLink="/probando3">componente 3</button>
+
+<<<<<<< HEAD
+
+
+<input type="text" #mejoraInput placeholder="Nueva mejora">
+<button (click)="agregarMejora(mejoraInput.value)">Agregar</button>
+
+<table mat-table [dataSource]="MEJORAFISCAL">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="mejora">
+    <th mat-header-cell *matHeaderCellDef> Mejora </th>
+    <td mat-cell *matCellDef="let element"> {{element.mejora}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="editar">
+    <th mat-header-cell *matHeaderCellDef> Editar </th>
+    <td mat-cell *matCellDef="let element"> {{element.editar}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['id', 'mejora', 'editar']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['id', 'mejora', 'editar'];"></tr>
+</table>
+
+
+ agregarMejora(nuevaMejora: string) {
+    const newId = this.MEJORAFISCAL.length + 1;
+    this.MEJORAFISCAL.push({ id: newId, mejora: nuevaMejora, editar: 'Editar' });
+  }
+=======
+    <div class="row">
+
+        <div class="col-sm-5">
+
+        </div>
+        <div class="col-sm-3">
+            <h3> {{nuevoService.product.name}}</h3>
+            <button type="button" class="btn btn-primary " routerLink="/probando2">Nuevo </button>
+
+        </div>
+    </div>
+
+        <div class="row">
+            
+            <div class="col-sm-5">
+
+            </div>
+            <div class="col-sm-3">
+                <br>
+
+                <button type="button" class="btn btn-primary " >Buscar </button>
+            </div>
+        </div>
+      
+
+    
+
+
+>>>>>>> 6bff81a2f919d1760220c28c0b73e7584ce3b08f
