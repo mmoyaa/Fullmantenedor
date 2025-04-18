@@ -56,7 +56,7 @@ constructor(private regionesService: RegionesService) { }
       movimientoSeleccionado: new FormControl ('')
     });
 
-
+    active = 1;
   
     
     getmovimientos() {
@@ -69,7 +69,7 @@ constructor(private regionesService: RegionesService) { }
     
     agregarMovimiento() {
       const selectedId = this.validadorform.controls.movimientoSeleccionado.value;
-      const movimiento = this.movall.find(m => m.id == selectedId);
+      const movimiento = this.movall.find(m => m.id == selectedId) ;
   
       
       const yaExiste = this.movimientosSeleccionados.some(m => m.id == movimiento.id);
@@ -136,7 +136,19 @@ constructor(private regionesService: RegionesService) { }
       });
     }
   
-
+    eliminarMovimientoPorId(id: number) {
+      this.regionesService.eliminarMovimiento(id).subscribe({
+        next: (res) => {
+          console.log('Eliminado correctamente:', res);
+          this.movimientosSeleccionados = this.movimientosSeleccionados.filter(m => m.id !== id);
+          this.listarMovimientos();
+        },
+        error: (err) => {
+          console.error('Error al eliminar:', err);
+          alert('Hubo un error al eliminar el movimiento.');
+        }
+      });
+    }
 
 
 
