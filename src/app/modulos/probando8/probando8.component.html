@@ -1,0 +1,30 @@
+<form [formGroup]="formulario" (ngSubmit)="enviar()">
+    <!-- Repartición -->
+    <label for="reparticion">Repartición</label>
+    <select formControlName="reparticion" class="form-control">
+      <option value="">Seleccione Repartición</option>
+      <option *ngFor="let rep of reparticionesAll" [value]="rep.id">
+        {{ rep.nombre }}
+      </option>
+    </select>
+  
+    <!-- Comuna -->
+    <label for="comuna">Comuna</label>
+    <select formControlName="comuna" class="form-control" [disabled]="comunasFiltradas.length === 0">
+      <option value="">Seleccione Comuna</option>
+      <option *ngFor="let comuna of comunasFiltradas" [value]="comuna.id">
+        {{ comuna.nombre }}
+      </option>
+    </select>
+  
+    <!-- Sector -->
+    <label for="sector">Sector</label>
+    <select formControlName="sector" class="form-control" [disabled]="sectoresFiltradas.length === 0">
+      <option value="">Seleccione Sector</option>
+      <option *ngFor="let sector of sectoresFiltradas" [value]="sector.id">
+        {{ sector.nombre }}
+      </option>
+    </select>
+  
+    <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+  </form>

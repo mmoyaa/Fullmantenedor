@@ -11,10 +11,11 @@ import { MainComponent } from './components/main/main.component';
 import { ModuloComponent } from './components/modulo/modulo.component';
 
 import { Probando7Component } from './modulos/probando7/probando7.component';
+import { Probando8Component } from './modulos/probando8/probando8.component';
 
 
 const routes: Routes = [
-  // {path : '' , redirectTo : '/probando1' , pathMatch : 'full'},
+  {path : '' , redirectTo : '/probando2' , pathMatch : 'full'},
   // { path: '', component:MainComponent },
   // { path: 'modulo', component:ModuloComponent },
   {path:'probando2',component:Probando2Component},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'probando5',component:Probando5Component},
   {path:'probando6',component:Probando6Component},
 
+  {path:'probando8',component:Probando8Component},
   {path:'probando7',component:Probando7Component}
 
 

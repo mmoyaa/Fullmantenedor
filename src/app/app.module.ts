@@ -27,6 +27,7 @@ import { MainComponent } from './components/main/main.component';
 import { ModuloComponent } from './components/modulo/modulo.component';
 
 import { Probando7Component } from './modulos/probando7/probando7.component';
+import { Probando8Component } from './modulos/probando8/probando8.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { Probando7Component } from './modulos/probando7/probando7.component';
     ModuloComponent,
 
     Probando7Component,
+      Probando8Component,
 
     
     

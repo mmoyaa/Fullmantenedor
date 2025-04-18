@@ -39,4 +39,9 @@ guardarMovimientos(movimientos: any[]): Observable<any> {
 listarMovimientos(): Observable<any[]> {
   return this.http.get<any[]>('http://localhost:3000/movimientos/listar');
 }
+
+
+
+
+
 }
