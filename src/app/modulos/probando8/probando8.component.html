@@ -1,5 +1,5 @@
-<form [formGroup]="formulario" (ngSubmit)="enviar()">
-    <!-- Repartición -->
+<!-- <form [formGroup]="formulario" (ngSubmit)="enviar()">
+    Repartición
     <label for="reparticion">Repartición</label>
     <select formControlName="reparticion" class="form-control">
       <option value="">Seleccione Repartición</option>
@@ -8,7 +8,7 @@
       </option>
     </select>
   
-    <!-- Comuna -->
+    Comuna
     <label for="comuna">Comuna</label>
     <select formControlName="comuna" class="form-control" [disabled]="comunasFiltradas.length === 0">
       <option value="">Seleccione Comuna</option>
@@ -17,7 +17,7 @@
       </option>
     </select>
   
-    <!-- Sector -->
+    Sector
     <label for="sector">Sector</label>
     <select formControlName="sector" class="form-control" [disabled]="sectoresFiltradas.length === 0">
       <option value="">Seleccione Sector</option>
@@ -27,4 +27,32 @@
     </select>
   
     <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+  </form> -->
+
+
+  <form [formGroup]="formulario" (ngSubmit)="enviar()">
+
+    <!-- Repartición -->
+    <select formControlName="reparticion" id="reparticion">
+      <option [ngValue]="null">Seleccione una repartición</option>
+      <option *ngFor="let r of reparticionesAll" [ngValue]="r.id">
+        {{ r.nombre }}
+      </option>
+    </select>
+    <!-- Comuna -->
+    <label for="comuna">Comuna:</label>
+    <select formControlName="comuna" id="comuna" [disabled]="comunasFiltradas.length === 0">
+      <option [ngValue]="null">Seleccione una comuna</option>
+      <option *ngFor="let c of comunasFiltradas" [ngValue]="c.id">{{ c.nombre }}</option>
+    </select>
+  
+    <!-- Sector -->
+    <label for="sector">Sector:</label>
+    <select formControlName="sector" id="sector" [disabled]="sectoresFiltradas.length === 0">
+      <option [ngValue]="null">Seleccione un sector</option>
+      <option *ngFor="let s of sectoresFiltradas" [ngValue]="s.id">{{ s.nombre }}</option>
+    </select>
+  
+    <button type="submit">Enviar</button>
+  
   </form>

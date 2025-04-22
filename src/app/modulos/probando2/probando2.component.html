@@ -54,6 +54,7 @@
         <div class="row">
           <div class="col-md-6">
             <label for="movimiento">Selecciona un movimiento:</label>
+            <!-- con esto baja el select -->
             <select formControlName="movimientoSeleccionado" (change)="agregarMovimiento()" class="form-control">
               <option *ngFor="let mov of movall" [value]="mov.id">
                 {{ mov.nombre }} 
@@ -79,12 +80,13 @@
                   <td>{{ mov.nombre }}</td>
         
                   <td>
+                    <!-- este boton quita el select  -->
                     <button class="btn btn-sm btn-danger" (click)="quitar(i)">
                       Quitar
                     </button>
                   </td>
                   <td>
-                    <!-- <button class="btn btn-danger btn-sm" (click)="eliminarMovimiento(i)">Eliminar</button> -->
+                 <!-- aca guarda en bd -->
                     <button class="btn btn-sm btn-success"  (click)="guardarMovimientos()">
                       Guardar Movimientos
                     </button>
@@ -95,14 +97,11 @@
           </div>
         </div>
         
-        <!-- <div class="row mt-3">
+        <div class="row mt-3">
           <div class="col-md-10 text-end">
-            <button class="btn btn-success"  (click)="guardarMovimientos()">
-              Guardar Movimientos
-            </button>
-            
+         
           </div>
-        </div> -->
+        </div>
         
         <hr>
         <div class="row mt-5" *ngIf="movimientosGuardados.length > 0">
@@ -122,6 +121,7 @@
                   <td>{{ mov.nombre }}</td>
                 
                   <td>
+                    <!-- elimina en bd -->
                     <button class="btn btn-danger btn-sm" (click)="eliminarMovimientoPorId(mov.id)">Eliminar</button>
                   </td>
                 </tr>

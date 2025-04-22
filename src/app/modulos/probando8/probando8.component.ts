@@ -20,9 +20,9 @@ export class Probando8Component implements OnInit {
   constructor(private principalService: PrincipalService, private fb: FormBuilder) {
 
     this.formulario = this.fb.group({
-      reparticion: [''],
-      comuna: [''],
-      sector: ['']
+      reparticion: [null], // <-- asegurate que esté en null, no en string vacío
+      comuna: [null],
+      sector: [null]
     });
 
   
@@ -31,20 +31,27 @@ export class Probando8Component implements OnInit {
   ngOnInit() {
     this.listarcomunas(), this.listarreparticiones(), this.listarsectores();
 
+    // this.formulario.get('reparticion')?.valueChanges.subscribe(reparticionId => {
+    //   this.comunasFiltradas = this.comunasAll.filter(c => c.reparticion_id == reparticionId);
+    // });
+    
+    // this.formulario.get('comuna')?.valueChanges.subscribe(comunaId => {
+    //   this.sectoresFiltradas = this.sectoresAll.filter(s => s.comuna_id == comunaId);
+    //   this.formulario.patchValue({ sector: '' });
+    // });
     this.formulario.get('reparticion')?.valueChanges.subscribe(reparticionId => {
-      this.comunasFiltradas = this.comunasAll.filter(c => c.reparticion_id == reparticionId);
-      this.formulario.patchValue({ comuna: '', sector: '' });
-      this.sectoresFiltradas = [];
+      console.log('ID repartición seleccionada:', reparticionId);
+      console.log('Todas las comunas:', this.comunasAll);
+    
+      // Mostramos todos los reparticion_id posibles
+      for (const c of this.comunasAll) {
+        console.log(`Comuna: ${c.nombre}, Repartición relacionada: ${c.reparticion_id ?? c.reparticionId}`);
+      }
+    
+      // Probar con el nombre que veas en consola
+      this.comunasFiltradas = this.comunasAll.filter(c => c.reparticionId == +reparticionId);
+      console.log('Comunas filtradas:', this.comunasFiltradas);
     });
-
-    // Reacciona cuando cambia la comuna
-    this.formulario.get('comuna')?.valueChanges.subscribe(comunaId => {
-      this.sectoresFiltradas = this.sectoresAll.filter(s => s.comuna_id == comunaId);
-      this.formulario.patchValue({ sector: '' });
-    });
-
-
-
 
 
 

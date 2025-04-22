@@ -66,7 +66,7 @@ constructor(private regionesService: RegionesService) { }
       });
     }
   
-    
+    // este es el metodo que baja el select
     agregarMovimiento() {
       const selectedId = this.validadorform.controls.movimientoSeleccionado.value;
       const movimiento = this.movall.find(m => m.id == selectedId) ;
@@ -79,22 +79,25 @@ constructor(private regionesService: RegionesService) { }
       }
     }
   
+// -------------------------------------------------------------------
+    // este metodo no hace nada en teoria
+    // eliminarMovimiento(index: number) {
+    //   const mov = this.movimientosSeleccionados[index];
     
-    eliminarMovimiento(index: number) {
-      const mov = this.movimientosSeleccionados[index];
-    
-      this.regionesService.eliminarMovimiento(mov.id).subscribe({
-        next: (res) => {
-          console.log('Eliminado correctamente:', res);
-          this.movimientosSeleccionados.splice(index, 1); 
-          this.listarMovimientos();
-        },
-        error: (err) => {
-          console.error('Error al eliminar:', err);
-          alert('Hubo un error al eliminar el movimiento.');
-        }
-      });
-    }
+    //   this.regionesService.eliminarMovimiento(mov.id).subscribe({
+    //     next: (res) => {
+    //       console.log('Eliminado correctamente:', res);
+    //       this.movimientosSeleccionados.splice(index, 1); 
+    //       this.listarMovimientos();
+    //     },
+    //     error: (err) => {
+    //       console.error('Error al eliminar:', err);
+    //       alert('Hubo un error al eliminar el movimiento.');
+    //     }
+    //   });
+//     // }
+// -------------------------------------------------------------------
+    // este metodo guarda en bd
     guardarMovimientos() {
       if (this.movimientosSeleccionados.length === 0) {
         alert('No hay movimientos para guardar.');
@@ -106,6 +109,7 @@ constructor(private regionesService: RegionesService) { }
           console.log('Guardado correctamente:', res);
           alert('Movimientos guardados exitosamente!');
           this.movimientosSeleccionados = []; 
+          
           this.listarMovimientos();
         },
         error: (err) => {
@@ -115,6 +119,7 @@ constructor(private regionesService: RegionesService) { }
       });
     }
 
+    // quita el select se la lista de abajo
     quitar(index: number) {
       this.movimientosSeleccionados.splice(index, 1);
     }
@@ -123,7 +128,7 @@ constructor(private regionesService: RegionesService) { }
 
 
     movimientosGuardados: any[] = [];
-
+//  este metodo lista lo que hayen BD
     listarMovimientos() {
       this.regionesService.listarMovimientos().subscribe({
         next: (res) => {
@@ -135,7 +140,7 @@ constructor(private regionesService: RegionesService) { }
         }
       });
     }
-  
+  // este metodo elimina de BD
     eliminarMovimientoPorId(id: number) {
       this.regionesService.eliminarMovimiento(id).subscribe({
         next: (res) => {
