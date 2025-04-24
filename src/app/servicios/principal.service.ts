@@ -14,22 +14,37 @@ export class PrincipalService {
 
 
 
+  // listarreparticiones(): Observable<any[]> {
+  //   return this.http.get<any[]>('http://localhost:3000/reparticiones/listar');
+  // }
    listarcomunas(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:3000/comunas/listar');
+    
   }
 
 
-  listarreparticiones(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:3000/reparticiones/listar');
-  }
 
   listarsectores(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:3000/sectores/listar');
   }
 
 
+  listarreparticiones(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:3000/reparticiones/listar');
+  }
+  
+  // obtenerComunasPorReparticion(id: number): Observable<any[]> {
+  //   return this.http.get<any[]>(`http://localhost:3000/comunas/por-reparticion/${id}`);
+  // }
+  
 
 
-
+  obtenerComunasPorReparticion(id: number): Observable<any[]> {
+    console.log('Obteniendo comunas para la repartición con id:', id);
+    return this.http.get<any[]>(`http://localhost:3000/comunas/por-reparticion/${id}`);
+  }
+  obtenerSectoresPorComuna(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:3000/sectores/por-comuna/${id}`);
+  }
 
 }

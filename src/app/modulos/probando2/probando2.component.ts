@@ -45,6 +45,7 @@ export class Probando2Component implements OnInit{
 
 
 constructor(private regionesService: RegionesService) { }
+
     validadorform = new FormGroup({
       dato1: new FormControl('', [Validators.required]),
       dato2: new FormControl('', [Validators.required]),

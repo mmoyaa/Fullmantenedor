@@ -1,58 +1,117 @@
-<!-- <form [formGroup]="formulario" (ngSubmit)="enviar()">
-    Repartición
-    <label for="reparticion">Repartición</label>
-    <select formControlName="reparticion" class="form-control">
-      <option value="">Seleccione Repartición</option>
-      <option *ngFor="let rep of reparticionesAll" [value]="rep.id">
-        {{ rep.nombre }}
-      </option>
-    </select>
+<!-- 
+  <div class="form-group">
+    <label for="reparticion">Repartición:</label>
+    <select
+    class="form-control"
+    id="reparticion"
+    name="reparticion"
+    [(ngModel)]="selectedReparticion"
+    (change)="onReparticionChange()"
+  >
+  <option [ngValue]="null" disabled>Seleccione una repartición</option>
+    <option *ngFor="let reparticion of reparticiones" [ngValue]="reparticion.reparticion_id">
+      {{ reparticion.nombre }}
+    </option>
+  </select>
+    
+  </div>
   
-    Comuna
-    <label for="comuna">Comuna</label>
-    <select formControlName="comuna" class="form-control" [disabled]="comunasFiltradas.length === 0">
-      <option value="">Seleccione Comuna</option>
-      <option *ngFor="let comuna of comunasFiltradas" [value]="comuna.id">
+
+  <div class="form-group mt-3">
+    <label for="comuna">Comuna:</label>
+    <select
+      class="form-control"
+      id="comuna"
+      [(ngModel)]="selectedComuna"
+      (change)="onComunaChange()"
+      name="comuna"
+      [disabled]="!selectedReparticion"
+    >
+      <option [ngValue]="null" disabled>Seleccione una comuna</option>
+      <option *ngFor="let comuna of comunas" [ngValue]="comuna.id">
         {{ comuna.nombre }}
       </option>
     </select>
-  
-    Sector
-    <label for="sector">Sector</label>
-    <select formControlName="sector" class="form-control" [disabled]="sectoresFiltradas.length === 0">
-      <option value="">Seleccione Sector</option>
-      <option *ngFor="let sector of sectoresFiltradas" [value]="sector.id">
+  </div>
+
+  <div class="form-group mt-3">
+    <label for="sector">Sector:</label>
+    <select
+      class="form-control"
+      id="sector"
+      [(ngModel)]="selectedSector"
+      name="sector"
+      [disabled]="!selectedComuna"
+    >
+      <option [ngValue]="null" disabled>Seleccione un sector</option>
+      <option *ngFor="let sector of sectores" [ngValue]="sector.id">
         {{ sector.nombre }}
       </option>
     </select>
-  
-    <button type="submit" class="btn btn-primary mt-3">Guardar</button>
-  </form> -->
+  </div>
+
+---------------------------------------------------------- -->
 
 
-  <form [formGroup]="formulario" (ngSubmit)="enviar()">
 
-    <!-- Repartición -->
-    <select formControlName="reparticion" id="reparticion">
-      <option [ngValue]="null">Seleccione una repartición</option>
-      <option *ngFor="let r of reparticionesAll" [ngValue]="r.id">
-        {{ r.nombre }}
+<form [formGroup]="miFormulario" (ngSubmit)="onSubmit()">
+  <!-- Repartición -->
+  <div class="form-group">
+    <label for="reparticion">Repartición:</label>
+    <select
+      class="form-control"
+      id="reparticion"
+      formControlName="reparticion"
+      (change)="onReparticionChange()"
+    >
+      <option [ngValue]="null" disabled>Seleccione una repartición</option>
+      <option *ngFor="let reparticion of reparticiones" [ngValue]="reparticion.reparticion_id">
+        {{ reparticion.nombre }}
       </option>
     </select>
-    <!-- Comuna -->
+    <div *ngIf="miFormulario.get('reparticion')?.touched && miFormulario.get('reparticion')?.invalid" class="text-danger">
+      La repartición es obligatoria.
+    </div>
+  </div>
+
+  <!-- Comuna -->
+  <div class="form-group mt-3">
     <label for="comuna">Comuna:</label>
-    <select formControlName="comuna" id="comuna" [disabled]="comunasFiltradas.length === 0">
-      <option [ngValue]="null">Seleccione una comuna</option>
-      <option *ngFor="let c of comunasFiltradas" [ngValue]="c.id">{{ c.nombre }}</option>
+    <select
+      class="form-control"
+      id="comuna"
+      formControlName="comuna"
+      (change)="onComunaChange()"
+      [disabled]="!miFormulario.get('reparticion')?.value"
+    >
+      <option [ngValue]="null" disabled>Seleccione una comuna</option>
+      <option *ngFor="let comuna of comunas" [ngValue]="comuna.id">
+        {{ comuna.nombre }}
+      </option>
     </select>
-  
-    <!-- Sector -->
+    <div *ngIf="miFormulario.get('comuna')?.touched && miFormulario.get('comuna')?.invalid" class="text-danger">
+      La comuna es obligatoria.
+    </div>
+  </div>
+
+  <!-- Sector -->
+  <div class="form-group mt-3">
     <label for="sector">Sector:</label>
-    <select formControlName="sector" id="sector" [disabled]="sectoresFiltradas.length === 0">
-      <option [ngValue]="null">Seleccione un sector</option>
-      <option *ngFor="let s of sectoresFiltradas" [ngValue]="s.id">{{ s.nombre }}</option>
+    <select
+      class="form-control"
+      id="sector"
+      formControlName="sector"
+      [disabled]="!miFormulario.get('comuna')?.value"
+    >
+      <option [ngValue]="null" disabled>Seleccione un sector</option>
+      <option *ngFor="let sector of sectores" [ngValue]="sector.id">
+        {{ sector.nombre }}
+      </option>
     </select>
-  
-    <button type="submit">Enviar</button>
-  
-  </form>
+    <div *ngIf="miFormulario.get('sector')?.touched && miFormulario.get('sector')?.invalid" class="text-danger">
+      El sector es obligatorio.
+    </div>
+  </div>
+
+  <button class="btn btn-primary mt-3" type="submit" [disabled]="miFormulario.invalid">Enviar</button>
+</form>

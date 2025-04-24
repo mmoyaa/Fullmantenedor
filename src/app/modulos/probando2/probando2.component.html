@@ -55,6 +55,7 @@
           <div class="col-md-6">
             <label for="movimiento">Selecciona un movimiento:</label>
             <!-- con esto baja el select -->
+             <!-- movall es el arreglo que guatrda lo que se trajo de la bd -->
             <select formControlName="movimientoSeleccionado" (change)="agregarMovimiento()" class="form-control">
               <option *ngFor="let mov of movall" [value]="mov.id">
                 {{ mov.nombre }} 
@@ -139,7 +140,9 @@
 	<li [ngbNavItem]="2">
 		<button ngbNavLink>Sector</button>
 		<ng-template ngbNavContent>
-	<h1>2222222222</h1>
+
+
+  <app-sector></app-sector>
 		</ng-template>
 	</li>
 	<li [ngbNavItem]="3">

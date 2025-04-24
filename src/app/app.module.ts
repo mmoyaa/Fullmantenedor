@@ -28,6 +28,7 @@ import { ModuloComponent } from './components/modulo/modulo.component';
 
 import { Probando7Component } from './modulos/probando7/probando7.component';
 import { Probando8Component } from './modulos/probando8/probando8.component';
+import { SectorComponent } from './modulos/sector/sector.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { Probando8Component } from './modulos/probando8/probando8.component';
 
     Probando7Component,
       Probando8Component,
+      SectorComponent,
 
     
     
