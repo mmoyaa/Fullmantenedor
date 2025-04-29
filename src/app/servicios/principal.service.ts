@@ -13,7 +13,6 @@ export class PrincipalService {
 
 
 
-
   // listarreparticiones(): Observable<any[]> {
   //   return this.http.get<any[]>('http://localhost:3000/reparticiones/listar');
   // }
@@ -47,4 +46,20 @@ export class PrincipalService {
     return this.http.get<any[]>(`http://localhost:3000/sectores/por-comuna/${id}`);
   }
 
+
+
+  private apiUrl = 'http://localhost:3000/api/comunas';
+
+  getcomunas(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+  getRegiones(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+  getReparticiones(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+  getSectores(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 }

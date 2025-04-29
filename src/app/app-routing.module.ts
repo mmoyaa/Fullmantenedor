@@ -13,6 +13,7 @@ import { ModuloComponent } from './components/modulo/modulo.component';
 import { Probando7Component } from './modulos/probando7/probando7.component';
 import { Probando8Component } from './modulos/probando8/probando8.component';
 import { SectorComponent } from './modulos/sector/sector.component';
+import { Probando10Component } from './modulos/probando10/probando10.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
 
   {path:'probando8',component:Probando8Component},
   {path:'probando7',component:Probando7Component},
-  {path:'sector',component:SectorComponent}
+  {path:'sector',component:SectorComponent},
+  {path:'probando10',component:Probando10Component}
 
 
     // { path: '', component:MainComponent },

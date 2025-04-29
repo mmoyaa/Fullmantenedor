@@ -1,0 +1,49 @@
+<button type="button" class="btn btn-primary " routerLink="/probando8">componente 8</button>
+<button type="button" class="btn btn-primary " routerLink="/probando2">componente 2</button>
+<h1>Modulo10</h1>
+
+<form [formGroup]="formulario">
+<div class="row">
+<div class="col-2">
+    <label>
+        <input type="radio" formControlName="opcion1" value="no" (change)="onOpcionChange(1)" checked> No
+      </label>
+      <label>
+        <input type="radio" formControlName="opcion1" value="si" (change)="onOpcionChange(1)"> Sí
+      </label>
+      <div class="form-group">
+        <label for="fecha1">Fecha Escritura / Publicación Diario Oficial</label>
+        <input type="date" formControlName="fecha1" id="fecha1" class="form-control">
+      </div>
+    </div>
+
+<div class="col-2">
+    <div>
+        <label>
+          <input type="radio" formControlName="opcion2" value="no" (change)="onOpcionChange(2)" checked> No
+        </label>
+        <label>
+          <input type="radio" formControlName="opcion2" value="si" (change)="onOpcionChange(2)"> Sí
+        </label>
+        <div class="form-group">
+          <label for="fecha2">Fecha De Vigencia</label>
+          <input type="date" formControlName="fecha2" id="fecha2" class="form-control">
+        </div>
+      </div>
+</div>
+<div class="col-2">
+    <div>
+        <label>
+          <input type="radio" formControlName="opcion3" value="no" (change)="onOpcionChange(3)" checked> No
+        </label>
+        <label>
+          <input type="radio" formControlName="opcion3" value="si" (change)="onOpcionChange(3)"> Sí
+        </label>
+        <div class="form-group">
+          <label for="fecha3">Fecha Acta de Entrega</label>
+          <input type="date" formControlName="fecha3" id="fecha3" class="form-control">
+        </div>
+      </div>
+</div>
+</div>  
+</form>
