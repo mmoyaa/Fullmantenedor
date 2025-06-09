@@ -9,6 +9,7 @@ export class RegionesService {
 
   private apiUrl = 'http://localhost:3000/movimientos';  
 
+  private apiUrl2 = 'http://localhost:3000/api/comunas';
   constructor(private http: HttpClient) { }
 
   getRegiones(): Observable<any> {
@@ -41,7 +42,17 @@ listarMovimientos(): Observable<any[]> {
 }
 
 
+// -------------------------------------------------------------------------------
+getcomunas(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrl2);
+}
 
+getReparticiones(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrl2);
+}
+getSectores(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrl2);
+}
 
 
 }

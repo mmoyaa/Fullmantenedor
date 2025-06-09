@@ -2,7 +2,7 @@
 <button type="button" class="btn btn-primary " routerLink="/probando2">componente 2</button>
 <h1>Modulo10</h1>
 
-<form [formGroup]="formulario">
+<!-- <form [formGroup]="formulario">
 <div class="row">
 <div class="col-2">
     <label>
@@ -46,4 +46,57 @@
       </div>
 </div>
 </div>  
+</form> -->
+<!-- --------------------------------probando----------------------------------------------- -->
+
+
+<h1>probando</h1>
+<form *ngIf="comunaForm" [formGroup]="comunaForm" (ngSubmit)="agregarComuna()">
+  <div>
+    <label>Nombre Comuna:</label>
+    <input type="text" formControlName="nombre" />
+  </div>
+
+  <div>
+    <label>ID Repartición:</label>
+    <input type="number" formControlName="idReparticion" />
+  </div>
+
+  <button type="submit" [disabled]="comunaForm.invalid">Guardar</button>
 </form>
+
+<ul>
+  <li *ngFor="let comuna of comunas">
+    {{ comuna.nombre }} - Repartición: {{ comuna.idReparticion }}
+  </li>
+</ul>
+
+
+<h1>serparacion</h1>
+
+<div class="container">
+  <h2>Agregar Comuna</h2>
+  <form [formGroup]="comunaForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" formControlName="nombre" class="form-control" />
+      <div *ngIf="comunaForm.get('nombre')?.invalid && comunaForm.get('nombre')?.touched" class="text-danger">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="region">Región</label>
+      <input id="region" formControlName="region" class="form-control" />
+      <div *ngIf="comunaForm.get('region')?.invalid && comunaForm.get('region')?.touched" class="text-danger">
+        La región es obligatoria.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="comunaForm.invalid">Agregar</button>
+  </form>
+
+  <div *ngIf="mensaje" class="alert alert-info mt-3">
+    {{ mensaje }}
+  </div>
+</div>

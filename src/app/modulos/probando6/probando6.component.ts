@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegionesService } from 'src/app/servicios/regiones.service';
 @Component({
   selector: 'app-probando6',
@@ -9,13 +10,42 @@ import { RegionesService } from 'src/app/servicios/regiones.service';
 
  
 export class Probando6Component implements OnInit {
+   formValorUtm: FormGroup;
   ngOnInit() {
 
     // this.getRegiones();
+
+  this.formValorUtm = this.fb.group({
+      fCobro: ['', Validators.required],
+      rUtm: ['', Validators.required],
+      rEq: ['', Validators.required],
+      muniUtm: ['', Validators.required],
+      muniEq: ['', Validators.required],
+      tUtm: ['', Validators.required],
+      tEq: ['', Validators.required],
+      tMuniUtm: ['', Validators.required],
+      tMuniEq: ['', Validators.required],
+      munic: ['', Validators.required],
+      cProc: [false],
+      validacion: [false],
+      nroFolio: [''],
+      mFisco: [''],
+      mMuni: [''],
+      fCancelacion: ['']
+});
+
+
+
+
+
+
+
+
+
   }
   comunService: RegionesService;
 
-  constructor(comunService: RegionesService) {
+  constructor(comunService: RegionesService,  private fb: FormBuilder) {
     this.comunService = comunService;
   }
 
@@ -121,4 +151,24 @@ export class Probando6Component implements OnInit {
       console.error('Por favor, ingresa tanto el Año como el V. UTM.');
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 }

@@ -62,4 +62,17 @@ export class PrincipalService {
   getSectores(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+
+
+addComuna(comuna: any): Observable<any> {
+  return this.http.post<any>(this.apiUrl, comuna);
+}
+
+
+
+
+
+
+
 }
